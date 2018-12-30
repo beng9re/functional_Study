@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<head>
+<script>
+
+
+
+function add(a,b){  //순수 함수 외부에 영향을 주지도 않고 안에서 리턴을 해준다
+    return a+b;
+}
+
+var c=20;
+
+function add2(a,b){ //외부에 영향을 주기 떄문에 순수함수가 아님 이것은 
+    b=c;            //부수효과가 있는함수
+    return a+b;
+}
+
+
+var obj1 =  { val : 10 };
+function add4(abj1,b){
+    obj.val+=b;
+}
+
+//순수 함수 : 외부에 영향을 주지않는 오브젝트 순수함수
+var obj2={ val : 10 }
+function add5(obj,b){
+    return { val : obj.val + b }
+}
+
+// 동일한 입력 동일한 결과 
+// 평가시점 중요하지 않음  어떤상태에서도 같은 결과가 나옴
+// 조합성이 좋아짐 
+
+/* 일급 함수 : 함수를 값에 이용할수 있음 JS는 일급 함수임*/
+
+
+
+/* 명령 파이프 라인 */ 
+console.log(`순수 가상함수 ` +  add(3,5));  //순수 함수
+console.log(`부수효과  가상함수` + add2(3,5)); //부수효과가 있는 함수
+console.log('오브젝트' + obj1,3);// 함수형 X
+console.log(obj1.val);// 함수형 X
+var obj2=add5(obj1,3);  //순수 가상수
+console.log(obj1.val);// 함수형 X
+console.log(obj2.val); //순수 함수 객체
+ 
+ 
+ 
+</script>
+</head>
+<body>
+
+</body>
+
+
+</html>
